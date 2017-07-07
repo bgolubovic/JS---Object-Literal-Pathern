@@ -1,0 +1,9 @@
+#car-list li{
+	display: inline-block;
+	width: 33%;
+}
+
+#car-list li img{
+	display: inline-block;
+	width: 33%;
+}

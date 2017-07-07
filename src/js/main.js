@@ -26,15 +26,15 @@ var cars={
 	showCars: function(actual_JSON){
 		actual_JSON.cars.forEach(function(car) {
 
-	    var template = document.getElementById("car-template").innerHTML,
-	    el = document.createElement('li');
+		    var template = document.getElementById("car-template").innerHTML,
+		    el = document.createElement('li');
 
-	    el.innerHTML = template;
+		    el.innerHTML = template;
 
-	    el.getElementsByClassName("car-name")[0].innerHTML += car.name;
-	    el.getElementsByClassName("car-img")[0].src = car.image;
+		    el.getElementsByClassName("car-name")[0].innerHTML += car.name;
+		    el.getElementsByClassName("car-img")[0].src = car.image;
 
-	    document.getElementById("car-list").appendChild(el);
+		    document.getElementById("car-list").appendChild(el);
 		});
 	},
 };
