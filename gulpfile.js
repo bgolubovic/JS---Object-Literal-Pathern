@@ -60,6 +60,11 @@ gulp.task('assets', function() {
 	return gulp.src(main + '/assets/**/*').pipe(gulp.dest(dist + '/assets'))
 });
 
+// Copy data.json
+gulp.task('json', function() {
+	return gulp.src(main + '/js/data.json').pipe(gulp.dest(dist + '/js'))
+});
+
 // [DEV] Browser sync server & watch task --DEV
 gulp.task('server-dev', function(done) {
 	bSync.init({
@@ -92,7 +97,7 @@ gulp.task('dev', function	(callback) {
 	runSequence(
 		'clean',
 		'jshint', 
-		[ 'html', 'style', 'assets', 'scripts'],
+		[ 'html', 'style', 'assets', 'scripts', 'json'],
 		'server-dev', 
 		callback);
 });
@@ -104,7 +109,7 @@ gulp.task('pro', function(callback) {
 	runSequence(
 			'jshint', 
 			'clean', 
-			[ 'html', 'style', 'assets', 'script'],
+			[ 'html', 'style', 'assets', 'script', 'json'],
 			callback);
 });
 
