@@ -1,6 +1,6 @@
 {
-  distance: 50,
-  cars: [
+  "distance": 50,
+  "cars": [
     {
       "image": "https://lb.assets.fiat.com/assets/00/punto-my16/images/thumbnail/equipment/street.png",
       "speed": 148,
@@ -37,20 +37,20 @@
       "id": 5
     }
   ],
-  speed_limits: [
+  "speed_limits": [
     {
-      position: 22,
-      speed: 60
+      "position": 22,
+      "speed": 60
     },
     {
-      position: 45,
-      speed: 80
-    },
+      "position": 45,
+      "speed": 80
+    }
   ],
-  traffic_lights: [
+  "traffic_lights": [
     {
-      position: 28,
-      duration: 3000
-    },
+      "position": 28,
+      "duration": 3000
+    }
   ]
 }
