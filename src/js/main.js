@@ -2,6 +2,8 @@
 
 var cars={
 	init: function(){
+		this.cacheDom();
+        this.bindEvents();
 		var that = this;
 		this.loadJSON(function(response){
 			var actual_JSON = JSON.parse(response);
@@ -21,7 +23,10 @@ var cars={
 		xobj.send(null); 
 	},
 	cacheDom: function() {
-
+		this.$inputSearch = document.getElementById("input-search");
+    },
+    bindEvents: function() {
+    	this.$inputSearch.addEventListener('keyup', this.searchCars);
     },
 	showCars: function(actual_JSON){
 		actual_JSON.cars.forEach(function(car) {
@@ -37,6 +42,25 @@ var cars={
 		    document.getElementById("car-list").appendChild(el);
 		});
 	},
+
+	searchCars: function() {
+	    // Declare variables
+	    var input, filter, ul, li, a, i;
+	    input = document.getElementById("input-search");
+	    filter = input.value.toUpperCase();
+	    ul = document.getElementById("car-list");
+	    li = ul.getElementsByTagName('li');
+
+	    // Loop through all list items, and hide those who don't match the search query
+	    for (i = 0; i < li.length; i++) {
+	        a = li[i].getElementsByTagName("span")[0];
+	        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	            li[i].style.display = "";
+	        } else {
+	            li[i].style.display = "none";
+	        }
+	    }
+	}
 };
 
 cars.init();
