@@ -6,6 +6,7 @@ var cars={
 		this.loadJSON(function(response){
 			var actual_JSON = JSON.parse(response);
 			that.showCars(actual_JSON);
+			that.progressBars(actual_JSON.distance);
 			that.cacheDom();
         	that.bindEvents();
 		});
@@ -76,6 +77,13 @@ var cars={
 
 	checkboxChecked: function(ev){
 		console.log(ev);
+	},
+
+	progressBars: function(distance){
+		var progressBarsDom =  document.getElementsByClassName("progress-bar");
+		for (var i = 0; i < progressBarsDom.length; i++) {
+		    progressBarsDom[i].setAttribute("max", distance);
+		}
 	}
 };
 
