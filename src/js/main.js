@@ -2,13 +2,14 @@
 
 var cars={
 	init: function(){
-		this.cacheDom();
-        this.bindEvents();
 		var that = this;
 		this.loadJSON(function(response){
 			var actual_JSON = JSON.parse(response);
 			that.showCars(actual_JSON);
+			that.cacheDom();
+        	that.bindEvents();
 		});
+		
 	},
 	loadJSON: function(callback){
 		var xobj = new XMLHttpRequest();
@@ -24,11 +25,17 @@ var cars={
 	},
 	cacheDom: function() {
 		this.$inputSearch = document.getElementById("input-search");
+		this.$checkboxes = document.getElementsByClassName("checkbox");
     },
     bindEvents: function() {
     	this.$inputSearch.addEventListener('keyup', this.searchCars);
+    	for (var i = 0; i < this.$checkboxes.length; i++) {
+		    this.$checkboxes[i].addEventListener('click', this.checkboxChecked);
+		}
+    	// this.$checkbox.addEventListener('click', this.checkboxChecked);
     },
 	showCars: function(actual_JSON){
+		var carCheckCounter = 1;
 		actual_JSON.cars.forEach(function(car) {
 
 		    var template = document.getElementById("car-template").innerHTML,
@@ -38,6 +45,11 @@ var cars={
 
 		    el.getElementsByClassName("car-name")[0].innerHTML += car.name;
 		    el.getElementsByClassName("car-img")[0].src = car.image;
+
+		    el.getElementsByTagName('label')[0].setAttribute("for", "car-check-" + carCheckCounter);
+		    el.getElementsByClassName("checkbox")[0].setAttribute("id", "car-check-" + carCheckCounter);
+		    el.getElementsByClassName("checkbox")[0].setAttribute("name", "car-check-" + carCheckCounter);
+			carCheckCounter++;
 
 		    document.getElementById("car-list").appendChild(el);
 		});
@@ -60,6 +72,10 @@ var cars={
 	            li[i].style.display = "none";
 	        }
 	    }
+	},
+
+	checkboxChecked: function(ev){
+		console.log(ev);
 	}
 };
 
