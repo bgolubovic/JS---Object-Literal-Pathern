@@ -1,6 +1,9 @@
 Package manager: npm
+
 Build tool: Gulp
+
 Language: Plain JavaScript
+
 Purpose: Example of Object-Literal-Pathern
 
 /src/js/main.js is example of Object Literal Module written with plain JS.
