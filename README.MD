@@ -1,4 +1,4 @@
-//readme file
+/src/js/main.js is example of Object Literal Module written with plain JS.
 
 To run a project:
 
